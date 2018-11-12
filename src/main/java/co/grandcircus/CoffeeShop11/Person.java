@@ -63,8 +63,8 @@ public class Person {
 
 	@Override
 	public String toString() {
-		return "<p>" + firstName + " " + lastName + "</p><p>" + "Email: " + email + "</p><p>" + "Phone: " + phoneNumber
-				+ "</p><p>" + "Password: " + password + "</p>";
+		return "<h3>" + firstName + " " + lastName + "</h3><h3>" + "Email: " + email + "</h3><h3>" + "Phone: "
+				+ phoneNumber + "</h3><h3>" + "Password: " + password + "</h3>";
 	}
 
 }

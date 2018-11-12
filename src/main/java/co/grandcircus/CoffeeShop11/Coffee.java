@@ -36,7 +36,7 @@ public class Coffee {
 
 	@Override
 	public String toString() {
-		return "<p>" + bean + " " + shotNumber + "</p>";
+		return "<h3>" + bean + " " + shotNumber + "</h3>";
 	}
 
 }

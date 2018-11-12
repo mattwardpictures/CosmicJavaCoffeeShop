@@ -51,7 +51,7 @@ public class LatteCino extends Coffee {
 
 	@Override
 	public String toString() {
-		return super.toString() + "<p>" + size + "oz " + flavor + " " + drink + "</p>";
+		return super.toString() + "<h3>" + size + "oz " + flavor + " " + drink + "</h3>";
 	}
 
 }

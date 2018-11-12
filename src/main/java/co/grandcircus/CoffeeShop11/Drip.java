@@ -41,7 +41,7 @@ public class Drip extends Coffee {
 
 	@Override
 	public String toString() {
-		return super.toString() + "<p>" + size + "oz " + cream + " coffee" + "</p>";
+		return super.toString() + "<h3>" + size + "oz " + cream + " coffee" + "</h3>";
 	}
 
 }
