@@ -21,20 +21,20 @@
 					</ul>
 				</div>
 			</nav>
-			<div id="hero" class="row">
+			<div class="row">
 				<div class="col-sm">
 				
 				</div>
-				<div class="col-sm">
-					<h1>Your Orders</h1>
-					
+				<div id="hero" class="col-sm">
 					<div>
-						<img src="https://media.giphy.com/media/ClsNWtQIal14c/giphy.gif">
+					<h1> </h1>
 					</div>
+					<img src="https://media.giphy.com/media/ClsNWtQIal14c/giphy.gif">
 					
-					<div>
-						<p>${userData}</p>
-					</div>
+					<h1>You've Ordered A:</h1>
+				
+					<p>${userData}</p>
+					
 				</div>
 				<div class="col-sm">
 				
