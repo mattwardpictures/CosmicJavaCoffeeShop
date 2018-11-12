@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+body {
+	text-align: center;
+	background-image: url("https://cdn.shopify.com/s/files/1/1135/9342/files/prod_coffee_beans.jpg?6690288562741779938");
+	background-position: top;
+	background-repeat: no-repeat;
+	}
+	
+img {margin-bottom: 20px;}
+
+.selector-for-some-widget {box-sizing: content-box;}
+
+.col-sm {text-align: center;}
+.col-md {text-align: center;}
+
+
+	
