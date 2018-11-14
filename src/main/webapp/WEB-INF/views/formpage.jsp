@@ -16,6 +16,7 @@
 				<a class="navbar-brand" href="/">Cosmic Java</a>
 				<div>
 					<ul class="navbar-nav mr-auto">
+						<li class="nav-item"><a class="nav-link" href="bakery">Bakery</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
 						<li class="nav-item"><a class="nav-link" href="register">Please Register</a></li>
 					</ul>
@@ -40,6 +41,12 @@
 				<div class="col-sm">
 				
 				</div>
+			</div>
+		</div>
+		
+		<div id="footer" class="row">
+			<div class="col-md">
+				<small>© 2018 Cosmic Java Co.</small>
 			</div>
 		</div>
 	

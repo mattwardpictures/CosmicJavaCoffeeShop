@@ -27,7 +27,8 @@
 				<a class="navbar-brand" href="#">Cosmic Java</a>
 				<div>
 					<ul class="navbar-nav mr-auto">
-						<li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
+						<li class="nav-item"><a class="nav-link" href="/food">Bakery</a></li>
+						<li class="nav-item"><a class="nav-link" href="about">About Us</a></li>
 						<li class="nav-item"><a class="nav-link" href="register">Please Register</a></li>
 					</ul>
 				</div>

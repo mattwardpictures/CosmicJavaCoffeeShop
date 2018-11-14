@@ -3,6 +3,7 @@ package co.grandcircus.CoffeeShop11;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,6 +21,12 @@ public class BaristaController {
 
 	@Autowired
 	private Drip americano;
+
+	@Autowired
+	FoodJDBCDAO dao;
+
+	@Autowired
+	UserJDBCDAO userDao;
 
 	@RequestMapping("/")
 	public ModelAndView index() {
@@ -79,6 +86,60 @@ public class BaristaController {
 		americano.setSize(size);
 		americano.setCream(cream);
 		return new ModelAndView("orderform", "userData", americano);
+	}
+
+	@RequestMapping("/bakery")
+	public ModelAndView bakery() {
+		return new ModelAndView("bakery");
+	}
+
+	@RequestMapping("/food")
+	public ModelAndView listFood(@RequestParam(value = "category", required = false) String category) {
+		ModelAndView mv = new ModelAndView("bakery");
+		if (category != null && !category.isEmpty()) {
+			mv.addObject("food", dao.findByCategory(category));
+			mv.addObject("category", category);
+		} else {
+			mv.addObject("food", dao.findAllFoods());
+		}
+		return mv;
+	}
+
+	@RequestMapping("/add-food")
+	public String addStuff() {
+		return "food-form";
+	}
+
+	@RequestMapping(value = "newfood", method = RequestMethod.POST)
+	public ModelAndView newFood(Food newFood) {
+		dao.addFood(newFood.getName(), newFood.getCategory(), newFood.getDescription(), newFood.getPrice());
+		return new ModelAndView("redirect:/food");
+	}
+
+	@RequestMapping(value = "newuser", method = RequestMethod.POST)
+	public ModelAndView newUser(Person newUser) {
+		userDao.addUser(newUser.getFirstName(), newUser.getLastName(), newUser.getEmail(), newUser.getPhoneNumber(),
+				newUser.getPassword());
+		return new ModelAndView("redirect:/Users");
+	}
+
+	@RequestMapping("/update")
+	public ModelAndView updateForm(@RequestParam("id") int idFromPage) {
+
+		return new ModelAndView("update-form", "id", idFromPage);
+	}
+
+	@RequestMapping("update-food")
+	public ModelAndView updateFood(Food updateFoodList) {
+		dao.updateFood(updateFoodList.getId(), updateFoodList.getName(), updateFoodList.getCategory(),
+				updateFoodList.getDescription(), updateFoodList.getPrice());
+		return new ModelAndView("redirect:/food");
+	}
+
+	@RequestMapping("/delete")
+	public ModelAndView remove(@RequestParam("id") int id) {
+		dao.deleteFood(id);
+		return new ModelAndView("redirect:/food");
 	}
 
 }
