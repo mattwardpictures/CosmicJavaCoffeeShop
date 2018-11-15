@@ -1,40 +1,68 @@
 package co.grandcircus.CoffeeShop11;
 
-import org.springframework.stereotype.Component;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
-@Component
+@Entity
+@Table(name = "Users")
+@NamedQuery(name = "find_all_persons", query = "select p from Person p")
 public class Person {
 
-	private String firstName, lastName, email, phoneNumber, password;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
+	private Integer id;
+
+	private String firstname, lastname, email, phone, password;
 
 	public Person() {
-		super();
 
 	}
 
-	public Person(String firstName, String lastName, String email, String password, String phoneNumber) {
+	public Person(Integer id, String firstname, String lastname, String email, String phone, String password) {
 		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
+		this.id = id;
+		this.firstname = firstname;
+		this.lastname = lastname;
 		this.email = email;
+		this.phone = phone;
 		this.password = password;
-		this.phoneNumber = phoneNumber;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public Person(String firstName, String lastName, String email, String phoneNumber, String password) {
+		this.firstname = firstName;
+		this.lastname = lastName;
+		this.email = email;
+		this.phone = phoneNumber;
+		this.password = password;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public Integer getId() {
+		return id;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstName) {
+		this.firstname = firstName;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastName) {
+		this.lastname = lastName;
 	}
 
 	public String getEmail() {
@@ -53,18 +81,18 @@ public class Person {
 		this.password = password;
 	}
 
-	public String getPhoneNumber() {
-		return phoneNumber;
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	public void setPhone(String phoneNumber) {
+		this.phone = phoneNumber;
 	}
 
 	@Override
 	public String toString() {
-		return "<h3>" + firstName + " " + lastName + "</h3><h3>" + "Email: " + email + "</h3><h3>" + "Phone: "
-				+ phoneNumber + "</h3><h3>" + "Password: " + password + "</h3>";
+		return "<h3>" + id + " " + firstname + " " + lastname + "</h3><h3>" + "Email: " + email + "</h3><h3>"
+				+ "Phone: " + phone + "</h3><h3>" + "Password: " + password + "</h3>";
 	}
 
 }

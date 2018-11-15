@@ -11,7 +11,10 @@ import org.springframework.web.servlet.ModelAndView;
 public class BaristaController {
 
 	@Autowired
-	private Person p;
+	PersonRepository p;
+
+//	@Autowired
+//	private Person p;
 
 	@Autowired
 	private Coffee coffee;
@@ -25,8 +28,8 @@ public class BaristaController {
 	@Autowired
 	FoodJDBCDAO dao;
 
-	@Autowired
-	UserJDBCDAO userDao;
+//	@Autowired
+//	UserJDBCDAO userDao;
 
 	@RequestMapping("/")
 	public ModelAndView index() {
@@ -40,15 +43,26 @@ public class BaristaController {
 		return new ModelAndView("register");
 	}
 
-	@RequestMapping("formresults")
-	public ModelAndView formTest(@RequestParam("firstname") String fname, @RequestParam("lastname") String lname,
+//	@RequestMapping("formresults")
+//	public ModelAndView formTest(@RequestParam("firstname") String fname, @RequestParam("lastname") String lname,
+//			@RequestParam("email") String email, @RequestParam("phone") String phoneNumber,
+//			@RequestParam("password") String password) {
+//		p.setFirstName(fname);
+//		p.setLastName(lname);
+//		p.setEmail(email);
+//		p.setPhoneNumber(phoneNumber);
+//		p.setPassword(password);
+//		return new ModelAndView("formpage", "userData", p);
+//	}
+
+	@RequestMapping("/formresults")
+	public ModelAndView addNewPerson(@RequestParam("firstname") String fname, @RequestParam("lastname") String lname,
 			@RequestParam("email") String email, @RequestParam("phone") String phoneNumber,
 			@RequestParam("password") String password) {
-		p.setFirstName(fname);
-		p.setLastName(lname);
-		p.setEmail(email);
-		p.setPhoneNumber(phoneNumber);
-		p.setPassword(password);
+
+		Person p1 = new Person(fname, lname, email, phoneNumber, password);
+		p.save(p1);
+
 		return new ModelAndView("formpage", "userData", p);
 	}
 
@@ -116,12 +130,12 @@ public class BaristaController {
 		return new ModelAndView("redirect:/food");
 	}
 
-	@RequestMapping(value = "newuser", method = RequestMethod.POST)
-	public ModelAndView newUser(Person newUser) {
-		userDao.addUser(newUser.getFirstName(), newUser.getLastName(), newUser.getEmail(), newUser.getPhoneNumber(),
-				newUser.getPassword());
-		return new ModelAndView("redirect:/Users");
-	}
+//	@RequestMapping(value = "newuser", method = RequestMethod.POST)
+//	public ModelAndView newUser(Person newUser) {
+//		userDao.addUser(newUser.getFirstName(), newUser.getLastName(), newUser.getEmail(), newUser.getPhoneNumber(),
+//				newUser.getPassword());
+//		return new ModelAndView("redirect:/Users");
+//	}
 
 	@RequestMapping("/update")
 	public ModelAndView updateForm(@RequestParam("id") int idFromPage) {
